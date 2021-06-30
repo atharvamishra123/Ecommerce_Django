@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+<!-- Implementing Bootstrap Card-->
+{% block content %}
+<!--For Him--->
+<div class ="container">
+      <div class = "pd=5 text-center bg-secondary">
+          <h4 class="p-3 mb-2 bg-dark text-white">For Him</h4>
+          <hr>
+          <br>
+          <br>
+          <div class="row">
+              {% for x in object_list_male %}
+              {% if forloop.counter|divisibleby:"3" %}
+                  <br>
+                  <br>
+              {% endif %}
+              <div class="col-sm-4">
+                  <div class="card m-2">
+                      <a href="{% url 'product_sub' id=x.id %}"><img src="{{x.pic.url}}" alt="" class="card-img-top" height="200px"></a>
+                      <div class = "card-footer">
+                          <medium>{{ x.name }}</medium>
+                      </div>
+                  </div>
+              </div>
+              {% endfor %}
+          </div>
+      </div>
+      <br>
+       <!--For Her-->
+      <div class = "pd=5 text-center bg-secondary">
+          <h4>For Her</h4>
+          <hr>
+          <br>
+          <br>
+          <div class="row">
+              {% for x in object_list_female %}
+              {% if forloop.counter|divisibleby:"3" %}
+                  <br>
+                  <br>
+              {% endif %}
+              <div class="col-sm-4">
+                  <div class="card m-2">
+                      <a href="sub/{{ x.id }}"><img src="{{x.pic.url}}" alt="" class="card-img-top" height="200px"></a>
+                      <div class = "card-footer">
+                         <!-- Providing link to sub-items -->
+                      </div>
+                  </div>
+              </div>
+              {% endfor %}
+          </div>
+      </div>
+  </div>
+{% endblock %}
